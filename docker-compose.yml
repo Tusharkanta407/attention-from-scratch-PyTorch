@@ -1,0 +1,2 @@
+# TODO: Write Docker Compose setup
+# Define a service (e.g. 'train') that builds the GPU dockerfile, binds volumes for development, and sets GPU reservations.

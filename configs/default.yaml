@@ -1,0 +1,39 @@
+# Training and data config
+data:
+  # If the LOTR tarball fails to download, place your text files under data/raw/text_files/*.txt
+  url: "https://piazza.com/redirect/s3?bucket=uploads&prefix=attach%2Fjlifkda6h0x5bk%2Fhzosotq4zil49m%2Fjn13x09arfeb%2Ftext_files.tar.gz"
+  out_dir: "data/raw"
+  # file chosen for training; change to any tokenizable file in text_files/
+  filename: "text_files/lotr.txt"
+  min_freq: 2
+  unk_token: "<UNK>"
+
+tokenization:
+  spacy_model: "en_core_web_sm"   # fallback to spaCy blank if missing
+
+training:
+  chunk_length: 128
+  batch_size: 64
+  lr: 0.0005
+  n_steps: 5000
+  eval_interval: 1000
+  label_smoothing: 0.1
+  seed: 1337
+  num_workers: 2
+
+model:
+  N: 2
+  d_model: 256
+  d_ff: 512
+  h: 8
+  dropout: 0.1
+  max_len: 5000
+
+inference:
+  temperature: 0.8
+  eval_start_tokens: ["The", "Where", "fight", "Gandalf"]
+  gen_tokens: 128
+
+io:
+  ckpt_dir: "outputs"
+  last_ckpt: "outputs/last.ckpt"

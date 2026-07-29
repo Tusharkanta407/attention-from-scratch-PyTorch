@@ -1,0 +1,6 @@
+# TODO: Write CPU Dockerfile
+# 1. Start from a python base image
+# 2. Install system dependencies if required
+# 3. Copy requirements.txt and install packages
+# 4. Download spaCy model
+# 5. Copy the code directory
